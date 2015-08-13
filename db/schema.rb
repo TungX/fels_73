@@ -11,17 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150812012929) do
+ActiveRecord::Schema.define(version: 20150814022229) do
 
   create_table "activities", force: :cascade do |t|
     t.integer  "user_id"
-    t.integer  "lession_id"
+    t.integer  "lesson_id"
     t.integer  "number_of_word"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
   end
 
-  add_index "activities", ["lession_id"], name: "index_activities_on_lession_id"
+  add_index "activities", ["lesson_id"], name: "index_activities_on_lesson_id"
   add_index "activities", ["user_id", "created_at"], name: "index_activities_on_user_id_and_created_at"
   add_index "activities", ["user_id"], name: "index_activities_on_user_id"
 
@@ -44,14 +44,14 @@ ActiveRecord::Schema.define(version: 20150812012929) do
 
   add_index "categories", ["name"], name: "index_categories_on_name", unique: true
 
-  create_table "lessions", force: :cascade do |t|
+  create_table "lessons", force: :cascade do |t|
     t.string   "name"
     t.integer  "category_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
 
-  add_index "lessions", ["category_id"], name: "index_lessions_on_category_id"
+  add_index "lessons", ["category_id"], name: "index_lessons_on_category_id"
 
   create_table "relationships", force: :cascade do |t|
     t.integer  "follower_id"
@@ -72,6 +72,7 @@ ActiveRecord::Schema.define(version: 20150812012929) do
     t.boolean  "admin"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
+    t.string   "remember_digest"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
@@ -80,11 +81,11 @@ ActiveRecord::Schema.define(version: 20150812012929) do
     t.string   "content"
     t.string   "image"
     t.string   "sound"
-    t.integer  "lession_id"
+    t.integer  "lesson_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  add_index "words", ["lession_id"], name: "index_words_on_lession_id"
+  add_index "words", ["lesson_id"], name: "index_words_on_lesson_id"
 
 end

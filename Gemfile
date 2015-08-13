@@ -20,6 +20,8 @@ gem "bootstrap-will_paginate", "0.0.10"
 gem "prawn"
 gem "prawn-table"
 gem "bcrypt", "~> 3.1.7"
+gem "config"
+gem "rails-i18n", "~> 4.0.0"
 
 group :development, :test do
   gem "byebug"

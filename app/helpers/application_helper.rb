@@ -1,6 +1,6 @@
 module ApplicationHelper
   def full_title page_title = ""
-    base_title = "Framgia E-Learning System"
+    base_title = t 'fels'
     if page_title.empty?
       base_title
     else
