@@ -24,9 +24,11 @@ module SessionsHelper
   end
 
   def sign_out
-    forget current_user
-    session.delete :user_id
-    @current_user = nil
+    if signed_in?
+      forget current_user
+      session.delete :user_id
+      current_user = nil
+    end
   end
 
   def remember user
