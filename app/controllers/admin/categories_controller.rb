@@ -1,5 +1,4 @@
-class Admin::CategoriesController < ApplicationController
-  before_action :require_admin
+class Admin::CategoriesController < Admin::ActionBaseController
   def index
     @categories = Category.paginate page: params[:page]
     @category = Category.new
@@ -19,13 +18,5 @@ class Admin::CategoriesController < ApplicationController
   private
   def category_params
     params.require(:category).permit(:name, :description)
-  end
-
-  def require_admin
-    unless signed_in? && current_user.admin?
-      sign_out
-      flash[:danger] = t "request_signin_admin"
-      redirect_to signin_path
-    end
   end
 end
