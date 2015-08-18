@@ -45,3 +45,5 @@ en:
     announce: "You've learned 0/36"
     categories: "Categories"
     list: "Category List"
+  delete: "Delete"
+  areyousure: "Are you sure?"

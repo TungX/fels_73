@@ -11,18 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150814074325) do
+ActiveRecord::Schema.define(version: 20150818024607) do
 
   create_table "activities", force: :cascade do |t|
     t.integer  "user_id"
-    t.integer  "lesson_id"
-    t.integer  "number_of_word"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.integer  "state",      default: 0
+    t.integer  "target_id"
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
 
-  add_index "activities", ["lesson_id"], name: "index_activities_on_lesson_id"
-  add_index "activities", ["user_id", "created_at"], name: "index_activities_on_user_id_and_created_at"
   add_index "activities", ["user_id"], name: "index_activities_on_user_id"
 
   create_table "answers", force: :cascade do |t|
