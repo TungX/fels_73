@@ -8,5 +8,10 @@ Rails.application.routes.draw do
   get "signup" => "users#new"
   resources :words, only: [:index]
   resources :users
-  resources :categories
+  resources :categories, only: [:index]
+  namespace :admin do
+    resources :words, only: [:index]
+    resources :users
+    resources :categories
+  end
 end

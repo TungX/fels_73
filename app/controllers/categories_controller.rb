@@ -1,5 +1,5 @@
 class CategoriesController < ApplicationController
-
+  before_action :authorize_user, only: [:create]
   def index
     @categories = Category.paginate page: params[:page]
   end

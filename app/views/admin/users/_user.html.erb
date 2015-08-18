@@ -4,6 +4,10 @@
       <p>
         <%= avatar_for user %>
         <%= link_to user.name, user %>
+        <%= link_to t("delete"), user, method: :delete,
+          data: {confirm: t("areyousure")} if signed_in? &&
+          current_user.admin? && current_user.id != user.id %>
+      </p>
       <%= user.email %>
     </section>
   </aside>

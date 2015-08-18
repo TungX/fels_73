@@ -47,3 +47,6 @@ en:
     list: "Category List"
   delete: "Delete"
   areyousure: "Are you sure?"
+  create_category: "Create category"
+  request_signin_admin: "You need signin account admin"
+  create_category_complete: "Create category complete"
