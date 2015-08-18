@@ -1,0 +1,13 @@
+<div class="list-group">
+  <div class="list-group-item list-group-item-success">
+    <h3 class="list-group-item-heading">
+      <%= category.name %>
+    </h3>
+    <p class="text-danger" text-align="right">
+      <%= t("category_page.announce") %>
+    </p>
+    <p class="list-group-item-text">
+      <%= category.description.truncate 50 %>
+    </p>
+  </div>
+</div>

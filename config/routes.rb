@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  namespace :admin do
+    root "categories#index"
+    resources :words
+    resources :users
+    resources :categories
+  end
   root "static_pages#home"
   get "signin" => "sessions#new"
   post "signin" => "sessions#create"
