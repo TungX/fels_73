@@ -50,3 +50,6 @@ en:
   create_category: "Create category"
   request_signin_admin: "You need signin account admin"
   create_category_complete: "Create category complete"
+  has: "has"
+  words: "words"
+  description: "Description"

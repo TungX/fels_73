@@ -1,4 +1,5 @@
 <div>
   <p><%= @category.name %></p>
-  <area><%= @category.description %></area>
+  <area><%= render @lessons %></area>
+  <%= t "description" %>:<area><%= @category.description %></area>
 </div>
