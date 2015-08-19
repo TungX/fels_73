@@ -4,6 +4,7 @@ Rails.application.routes.draw do
     resources :words
     resources :users
     resources :categories
+    resources :lessons
   end
   root "static_pages#home"
   get "signin" => "sessions#new"
@@ -15,4 +16,5 @@ Rails.application.routes.draw do
   resources :words, only: [:index]
   resources :users
   resources :categories
+  resources :lessons
 end

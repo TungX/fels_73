@@ -1,5 +1,6 @@
 class Admin::CategoriesController < Admin::ActionBaseController
   before_action :load_category, only: [:show, :edit, :update]
+
   def index
     @categories = Category.paginate page: params[:page]
     @category = Category.new
