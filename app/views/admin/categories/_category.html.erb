@@ -1,10 +1,10 @@
 <div class="list-group">
   <div class="list-group-item list-group-item-success">
     <h3 class="list-group-item-heading">
-      <%= category.name %>
+      <%= link_to category.name, admin_category_path(category) %>
     </h3>
     <p class="text-danger" text-align="right">
-      <%= t("category_page.announce") %>
+      <%= t "category_page.announce" %>
     </p>
     <p class="list-group-item-text">
       <%= category.description.truncate 50 %>

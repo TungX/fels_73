@@ -6,5 +6,6 @@
     <%= f.label :description %>
     <%= f.text_area :description %>
   </div>
-  <%= f.submit t("create_category"), class: "btn btn-primary" %>
+  <%= f.submit @category.id? ? t("update"): t("create_category"),
+    class: "btn btn-primary" %>
 <% end %>
