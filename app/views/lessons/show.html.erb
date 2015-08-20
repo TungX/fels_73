@@ -1,10 +1,8 @@
 <h1><%= t "lesson" %></h1>
 <li>
-  <p><%= t "category" %>
-  :<%= link_to @lesson.category.name, @lesson.category %></p>
   <p>
-    <%= @lesson.name %> <%= t "have" %>
-    <%= @lesson.words.count %> <%= t "words" %>
+  <%= t "category" %>: <%= link_to @lesson.category.name, @lesson.category %>
+  <%= t "has" %>: <%= @lesson.words.count %> <%= t "words" %>
   </p>
 </li>
 

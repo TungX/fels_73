@@ -1,6 +1,12 @@
 class Lesson < ActiveRecord::Base
   belongs_to :category
-  has_many :words
+  has_many :lesson_words, dependent: :destroy
+  has_many :words, through: :lesson_words
 
-  validates :name, presence: true, length: {maximum: 50}
+  before_create :create_words
+
+  private
+  def create_words
+    self.words = self.category.words.sample Settings.number_word_in_lessons
+  end
 end
