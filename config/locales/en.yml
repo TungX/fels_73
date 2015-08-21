@@ -57,3 +57,5 @@ en:
   start: "Start"
   create_lesson_complete: "You are create lesson complete"
   create_lesson_fail: "You are create lesson error"
+  create_word: "Create word"
+  play: "Play"

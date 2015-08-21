@@ -3,4 +3,5 @@
   <%= link_to t("edit"), edit_admin_category_path(@category) %>|
   <%= link_to t("delete"), admin_category_path(@category), method: :delete, data: {confirm: t("areyousure")} %></p>
   <%= @category.description %>
+  <%= render "admin/words/word_form" %>
 </div>
