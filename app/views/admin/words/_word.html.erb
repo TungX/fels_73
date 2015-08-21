@@ -1,0 +1,7 @@
+<% if @word.image? %>
+  <li><%= image_tag @word.image, size: 60 %></li>
+<% end %>
+<% if @word.sound? %>
+  <%= audio_tag @word.sound, class: "audio-play" %>
+  <li class="btn btn-primary audioButton"><%= t "play" %></li>
+<% end %>

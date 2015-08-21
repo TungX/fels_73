@@ -7,6 +7,7 @@ class Admin::CategoriesController < Admin::ActionBaseController
   end
 
   def show
+    @word = Word.new
   end
 
   def create

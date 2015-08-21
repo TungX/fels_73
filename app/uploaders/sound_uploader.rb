@@ -1,4 +1,4 @@
-class ImageUploader < CarrierWave::Uploader::Base
+class SoundUploader < CarrierWave::Uploader::Base
   storage :file
 
   def store_dir
@@ -6,6 +6,6 @@ class ImageUploader < CarrierWave::Uploader::Base
   end
 
   def extension_white_list
-    %w(jpg jpeg gif png)
+    %w(mp3 mp4 wma)
   end
 end

@@ -1,0 +1,14 @@
+<%= form_for [:admin, @word] do |f| %>
+  <%= render "shared/error_messages", object: f.object %>
+  <%= f.label :content %>
+  <%= f.text_field :content, class: "form-control" %>
+  <%= f.label :image %>
+  <span class="picture">
+    <%= f.file_field :image %>
+  </span>
+  <%= f.label :Sound %>
+  <span class="picture">
+    <%= f.file_field :sound %>
+  </span>
+  <%= f.submit t("create_word"), class: "btn-primary" %>
+<% end %>

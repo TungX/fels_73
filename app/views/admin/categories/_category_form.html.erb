@@ -2,10 +2,10 @@
   <%= render "shared/error_messages", object: f.object %>
   <div class="field">
     <%= f.label :name %>
-    <%= f.text_field :name %>
+    <%= f.text_field :name, class: "form-control" %>
     <%= f.label :description %>
-    <%= f.text_area :description %>
+    <%= f.text_area :description, class: "form-control" %>
   </div>
-  <%= f.submit @category.id? ? t("update"): t("create_category"),
+  <%= f.submit @category.id? ? t("update") : t("create_category"),
     class: "btn btn-primary" %>
 <% end %>
