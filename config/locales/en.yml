@@ -53,3 +53,7 @@ en:
   has: "has"
   words: "words"
   description: "Description"
+  create_at: "create at"
+  start: "Start"
+  create_lesson_complete: "You are create lesson complete"
+  create_lesson_fail: "You are create lesson error"
