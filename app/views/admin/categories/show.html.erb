@@ -4,4 +4,8 @@
   <%= link_to t("delete"), admin_category_path(@category), method: :delete, data: {confirm: t("areyousure")} %></p>
   <%= @category.description %>
   <%= render "admin/words/word_form" %>
+  <ol class="words">
+    <%= render @words %>
+  </ol>
+  <%= will_paginate @words %>
 </div>

@@ -1,10 +1,10 @@
 class LessonsController < ApplicationController
   before_action :authorize_user
   before_action :load_category, only: [:create]
+  before_action :load_lesson, only: [:show]
 
   def show
-    @lesson = Lesson.find_by id: params[:id]
-    redirect_to categories_path unless @lesson
+    @words = @lesson.words
   end
 
   def create
@@ -29,5 +29,10 @@ class LessonsController < ApplicationController
   def load_category
     @category = Category.find_by id: params[:lesson][:category_id]
     redirect_to categories_path unless @category
+  end
+
+  def load_lesson
+    @lesson = Lesson.find_by id: params[:id]
+    redirect_to categories_path unless @lesson
   end
 end

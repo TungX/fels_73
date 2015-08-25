@@ -4,5 +4,6 @@
   <%= t "category" %>: <%= link_to @lesson.category.name, @lesson.category %>
   <%= t "has" %>: <%= @lesson.words.count %> <%= t "words" %>
   </p>
+  <%= render @words if @words.any? %>
 </li>
 

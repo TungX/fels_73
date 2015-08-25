@@ -59,3 +59,5 @@ en:
   create_lesson_fail: "You are create lesson error"
   create_word: "Create word"
   play: "Play"
+  not_answer_true: "Not answer true"
+  content: "Content"

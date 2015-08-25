@@ -8,6 +8,7 @@ class Admin::CategoriesController < Admin::ActionBaseController
 
   def show
     @word = Word.new
+    @words = @category.words.paginate page: params[:page]
   end
 
   def create

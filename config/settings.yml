@@ -1,2 +1,4 @@
 default_avatar: "rails.png"
 number_word_in_lessons: 20
+number_answers: 4
+size_image_of_word: 60
