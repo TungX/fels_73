@@ -1,5 +1,8 @@
 <li>
-  <%= t "content" %>: <%= word.content %>
+  <%= t "content" %>: <%= link_to word.content, admin_word_path(word) %>
+  <%= link_to t("edit"), edit_admin_word_path(word) %>|
+  <%= link_to t("delete"), admin_word_path(word), method: :delete,
+    data: {confirm: t("areyousure")} %>
   <% if word.image? %>
     <p><%= image_tag word.image, size: 60 %></p>
   <% end %>
@@ -9,7 +12,9 @@
   <% end %>
   <% if word.answers.any? %>
     <% word.answers.each do |answer| %>
-      <p><%= answer.content %></p>
+      <p>
+        <%= answer.content %>
+      </p>
     <% end %>
   <% end %>
 </li>
