@@ -72,3 +72,8 @@ en:
   answer_create: "Answer created"
   word_created: "Word created"
   add_answer: "Add answer"
+  filter: "Filter"
+  word:
+    all_word: "All words"
+    learned: "Word learned"
+    no_learn: "Word no learn"
