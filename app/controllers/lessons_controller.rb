@@ -8,7 +8,7 @@ class LessonsController < ApplicationController
   end
 
   def create
-    @lesson = Lesson.new category_id: @category.id
+    @lesson = current_user.lessons.new category_id: @category.id
     if @lesson.save
       flash[:success] = t "create_lesson_complete"
       redirect_to @lesson
