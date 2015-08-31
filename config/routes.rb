@@ -18,4 +18,5 @@ Rails.application.routes.draw do
   resources :categories
   resources :lessons
   resources :answers
+  resources :relationships, only: [:create, :destroy]
 end

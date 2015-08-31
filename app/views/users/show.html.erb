@@ -1,2 +1,3 @@
 <% provide :title, t("show_user") %>
+<%= render "follow_form" if signed_in? %>
 <%= render @user%>

@@ -81,6 +81,8 @@ en:
   you_have_true_answer: "You have true answer"
   you_have_false_answer: "You have false answer"
   submit: "Submit"
+  follow: "Follow"
+  unfollow: "Unfollow"
   word:
     all_word: "All words"
     learned: "Word learned"
