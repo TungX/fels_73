@@ -4,7 +4,6 @@ class LessonsController < ApplicationController
   before_action :load_lesson, only: [:show]
 
   def show
-    @words = @lesson.words
   end
 
   def create
@@ -16,6 +15,16 @@ class LessonsController < ApplicationController
       flash[:danger] = t "create_lesson_fail"
       redirect_to categories_path
     end
+  end
+
+  def update
+    @lesson = Lesson.find_by id: params[:id]
+    if @lesson.update_attributes lesson_params
+      flash[:success] = "update_lesson_complete"
+    else
+      flash[:danger] = t "update_lesson_fail"
+    end
+    redirect_to @lesson
   end
 
   private
@@ -34,5 +43,9 @@ class LessonsController < ApplicationController
   def load_lesson
     @lesson = Lesson.find_by id: params[:id]
     redirect_to categories_path unless @lesson
+  end
+
+  def lesson_params
+    params.require(:lesson).permit :learned, lesson_words_attributes: [:id, :answer_id]
   end
 end
