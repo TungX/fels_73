@@ -1,0 +1,13 @@
+<div class="row">
+  <aside class="col-md-4">
+    <section class="user_info">
+      <p>
+        <%= avatar_for current_user %>
+        <%= link_to current_user.name, current_user %>
+        <%= current_user.email %>
+        <%= t "number_word_learned" %>
+        <%= Word.all_word(current_user.id).count %>
+      </p>
+    </section>
+  </aside>
+</div>
