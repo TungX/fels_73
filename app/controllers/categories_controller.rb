@@ -4,6 +4,8 @@ class CategoriesController < ApplicationController
   end
 
   def show
-    @category = Category.find_by id: params[:id]
+    @category = Category.friendly.find params[:id]
+    redirect_to @category, status: :move_permanently unless
+      request.path == category_path(@user)
   end
 end

@@ -21,7 +21,7 @@ gem "prawn"
 gem "prawn-table"
 gem "bcrypt", "~> 3.1.7"
 gem "config"
-gem "friendly_id", "~> 4.0.8"
+gem "friendly_id", "5.1.0.beta.1"
 
 group :development, :test do
   gem "byebug"

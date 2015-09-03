@@ -10,6 +10,8 @@ class Admin::CategoriesController < Admin::ActionBaseController
     @word = @category.words.new
     Settings.number_answers.times{@word.answers.build}
     @words = @category.words.paginate page: params[:page]
+    redirect_to admin_category_path(@category), status: :move_permanently unless
+      request.path == admin_category_path(@category)
   end
 
   def create
@@ -24,10 +26,12 @@ class Admin::CategoriesController < Admin::ActionBaseController
   end
 
   def edit
-    redirect_to admin_categories_path unless @category
+    redirect_to edit_admin_category_path(@category), status: :move_permanently unless
+      request.path == edit_admin_category_path(@category)
   end
 
   def update
+    byebug
     if @category && @category.update_attributes(category_params)
       flash[:success] = t "profile_updated"
       redirect_to admin_category_path @category
@@ -42,6 +46,6 @@ class Admin::CategoriesController < Admin::ActionBaseController
   end
 
   def load_category
-     @category = Category.find_by id: params[:id]
+     @category = Category.friendly.find params[:id]
   end
 end

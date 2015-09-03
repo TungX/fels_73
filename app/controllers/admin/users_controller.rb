@@ -4,7 +4,7 @@ class Admin::UsersController < Admin::ActionBaseController
   end
 
   def destroy
-    user = User.find_by id: params[:id]
+    user = User.friendly.find params[:id]
     if user.id != current_user.id
       user.destroy
     end
