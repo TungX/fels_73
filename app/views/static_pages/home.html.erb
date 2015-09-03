@@ -1,9 +1,5 @@
-<% provide :title, t("home") %>
-
-<div class="center jumbotron">
-  <h1><%= t "fels" %></h1>
-  <p>
-    <%= t "webcome" %>
-  </p>
-  <%= link_to t("signup_now"), signup_path, class: "btn btn-lg btn-primary" %>
-</div>
+<%= render "user_info" %>
+<% if @activities.any? %>
+  <%= render @activities %>
+  <%= will_paginate @activities %>
+<% end %>
