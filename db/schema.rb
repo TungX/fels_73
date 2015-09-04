@@ -38,11 +38,13 @@ ActiveRecord::Schema.define(version: 20150820084323) do
   create_table "categories", force: :cascade do |t|
     t.string   "name"
     t.string   "description"
+    t.string   "slug"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
 
   add_index "categories", ["name"], name: "index_categories_on_name", unique: true
+  add_index "categories", ["slug"], name: "index_categories_on_slug"
 
   create_table "lesson_words", force: :cascade do |t|
     t.integer  "lesson_id"
@@ -84,12 +86,14 @@ ActiveRecord::Schema.define(version: 20150820084323) do
     t.string   "avatar"
     t.string   "password_digest"
     t.boolean  "admin"
+    t.string   "slug"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
     t.string   "remember_digest"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
+  add_index "users", ["slug"], name: "index_users_on_slug"
 
   create_table "words", force: :cascade do |t|
     t.string   "content"

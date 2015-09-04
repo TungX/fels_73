@@ -4,4 +4,15 @@ class Category < ActiveRecord::Base
 
   validates :name,  presence: true, length: {maximum: 50}, uniqueness: {case_sensitive: false}
   validates :description,  presence: true, length: {maximum: 140}
+
+  before_save :make_slug
+
+  def to_param
+    slug
+  end
+
+  private
+  def make_slug
+    self.slug = self.name.downcase.gsub(" ", "-")
+  end
 end

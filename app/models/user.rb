@@ -11,6 +11,7 @@ class User < ActiveRecord::Base
   has_many :activities, dependent: :destroy
 
   before_save {self.email = email.downcase}
+  after_save :make_slug
 
   attr_accessor :remember_token
 
@@ -61,5 +62,14 @@ class User < ActiveRecord::Base
 
   def load_activities
     Activity.all_activities_by self.id
+  end
+
+  def to_param
+    slug
+  end
+
+  private
+  def make_slug
+    self.update_column(:slug, "#{self.id}-#{name.downcase.gsub(" ", "-")}")
   end
 end
