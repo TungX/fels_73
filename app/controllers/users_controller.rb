@@ -7,8 +7,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find_by id: params[:id]
-    redirect_to root_path unless @user
+    @user = User.find_by(id: params[:id])|| User.find_by(slug: params[:id])
   end
 
   def new
@@ -20,7 +19,7 @@ class UsersController < ApplicationController
     @user = User.new user_params
     if @user.save
       sign_in @user
-      flash[:success] = t "webcome"
+      flash[:success] = t "welcome"
       redirect_to @user
     else
       render :new
@@ -54,7 +53,7 @@ class UsersController < ApplicationController
   end
 
   def correct_user
-    @user = User.find_by id: params[:id]
+    @user = User.find_by(id: params[:id])|| User.find_by(slug: params[:id])
     redirect_to root_url unless current_user? @user
   end
 end
