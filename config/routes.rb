@@ -14,7 +14,9 @@ Rails.application.routes.draw do
   get "about" => "static_pages#about"
   get "signup" => "users#new"
   resources :words
-  resources :users
+  resources :users do
+    resources :relationships, only: [:index]
+  end
   resources :categories
   resources :lessons
   resources :answers

@@ -86,6 +86,8 @@ en:
   at: "at"
   ago: "ago"
   number_word_learned: "Number word learned"
+  followers: "Followers"
+  following: "Following"
   word:
     all_word: "All words"
     learned: "Word learned"

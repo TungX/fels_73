@@ -11,3 +11,6 @@ option:
   - all_word
   - learned
   - no_learn
+follow_methods:
+  - following
+  - followers
