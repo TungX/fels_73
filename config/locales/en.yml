@@ -42,7 +42,7 @@ en:
   show_user: "Show info user"
   error: "Errors"
   category_page:
-    announce: "You've learned 0/36"
+    announce: "You've learned"
     categories: "Categories"
     list: "Category List"
   delete: "Delete"

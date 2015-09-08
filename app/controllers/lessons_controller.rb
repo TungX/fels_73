@@ -1,6 +1,7 @@
 class LessonsController < ApplicationController
   before_action :authorize_user
   before_action :load_category, only: [:create]
+  before_action :check_lesson_comlete, only: [:create]
   before_action :load_lesson, only: [:show]
 
   def show
@@ -20,7 +21,7 @@ class LessonsController < ApplicationController
   def update
     @lesson = Lesson.find_by id: params[:id]
     if @lesson.update_attributes lesson_params
-      flash[:success] = "update_lesson_complete"
+      flash[:success] = t "update_lesson_complete"
     else
       flash[:danger] = t "update_lesson_fail"
     end
@@ -43,6 +44,11 @@ class LessonsController < ApplicationController
   def load_lesson
     @lesson = Lesson.find_by id: params[:id]
     redirect_to categories_path unless @lesson
+  end
+
+  def check_lesson_comlete
+    @lesson = current_user.lessons.not_learn(@category.id).first
+    redirect_to @lesson if @lesson
   end
 
   def lesson_params

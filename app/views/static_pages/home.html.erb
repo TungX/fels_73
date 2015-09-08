@@ -1,5 +1,13 @@
-<%= render "user_info" %>
-<% if @activities.any? %>
-  <%= render @activities %>
-  <%= will_paginate @activities %>
-<% end %>
+<div id="show_activity_wrapper">
+  <aside class="form_left">
+    <%= render "user_info" %>
+  </aside>
+  <aside class="form_right" >
+    <% if @activities.any? %>
+      <ul id="show_activity_wrapper">
+        <%= render @activities %>
+      </ul>
+      <%= will_paginate @activities %>
+    <% end %>
+  </aside>
+</div>

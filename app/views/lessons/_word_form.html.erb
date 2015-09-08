@@ -1,7 +1,24 @@
-<div class="fields">
-  <%= f.object.word.content %>
-  <% f.object.word.answers.each do |answer| %>
-    <%= answer.content %>
-    <%= f.radio_button :answer_id, answer.id %>
-  <% end %>
+<div id="word_wrapper">
+  <div class="form_left">
+    <strong><%= f.object.word.content %></strong>
+    <p><%= image_tag f.object.word.image if f.object.word.image? %></p>
+    <% if f.object.word.sound? %>
+      <%= audio_tag f.object.word.sound, class: "audio-play" %>
+      <p class="btn btn-primary audioButton"><%= t "play" %></p>
+    <% end %>
+  </div>
+  <div class="form_right">
+    <ul id="answer_wrapper">
+      <% f.object.word.answers.each do |answer| %>
+        <li>
+          <div class="form_left">
+            <%= f.radio_button :answer_id, answer.id %>
+          </div>
+          <div class="form_right">
+            <%= answer.content %>
+          </div>
+        </li>
+      <% end %>
+    </ul>
+  </div>
 </div>

@@ -6,6 +6,8 @@ class Lesson < ActiveRecord::Base
 
   accepts_nested_attributes_for :lesson_words
 
+  scope :not_learn, ->category_id{where("category_id=#{category_id} and learned<>'t'")}
+
   before_create :create_words, :create_activity_when_create
   before_update :create_activity_when_update
 

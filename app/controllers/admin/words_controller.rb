@@ -6,7 +6,7 @@ class Admin::WordsController < ApplicationController
     @word = @category.words.new word_params
     if @word.save
       flash[:success] = t "word_created"
-      redirect_to admin_word_path @word
+      redirect_to admin_category_path @word.category
     else
       @words = @category.words.paginate page: params[:page]
       @word.answers.build if @word.answers.empty?
@@ -24,18 +24,18 @@ class Admin::WordsController < ApplicationController
     @word = Word.find_by id: params[:id]
     if @word && @word.update_attributes(word_params)
       flash[:success] = t "word_updated"
-      redirect_to admin_word_path @word
+      redirect_to admin_category_path @word.category
     else
       render "admin/words/edit"
     end
   end
 
   def destroy
-    word = Word.find_by id: params[:id]
-    if word
-      word.destroy
+    @word = Word.find_by id: params[:id]
+    if @word
+      @word.destroy
       flash[:success] = t "word_destroy"
-      redirect_to admin_category_path word.category
+      redirect_to admin_category_path @word.category
     else
       redirect_to admin_categories_path
     end

@@ -5,28 +5,44 @@
         params[:category_id]),
       include_blank: t("word.all"), class: "form-control" %>
   </p>
-  <% Settings.option.each do |option| %>
-    <p>
-      <%= radio_button_tag :option, option,
-        (checked = true if params[:option] == option) %>
-      <%= t "word.#{option}" %>
-    </p>
-    <p>
-  <% end %>
-  <%= f.submit t("filter"), class: "form-control" %>
+  <div id="filter">
+    <% Settings.option.each do |option| %>
+      <p class="form">
+        <%= radio_button_tag :option, option,
+          (checked = true if params[:option] == option), class: "form_left" %>
+        <%= t "word.#{option}" %>
+      </p>
+    <% end %>
+    <%= f.submit t("filter"), class: "form-control form btn-primary" %>
+  </div>
 <% end %>
 
 <% if @words.any? %>
-  <% @words.each do |word| %>
-    <div>
-      <%= t "content" %>: <%= word.content %>
-      <% if word.image? %>
-        <p><%= image_tag word.image, size: Settings.size_image_of_word %></p>
-      <% end %>
-      <% if word.sound? %>
-        <%= audio_tag word.sound, class: "audio-play" %>
-        <p class="btn btn-primary audioButton"><%= t "play" %></p>
-      <% end %>
-    </div>
-  <% end %>
+  <ul id="word_list">
+    <li>
+      <strong class="form"><%= t "content" %></strong>
+      <strong class="form"><%= t "image" %></strong>
+      <strong class="form"><%= t "sound" %></strong>
+    </li>
+    <% @words.each do |word| %>
+      <li>
+        <span class="form">
+          <%= word.content %>
+        </span>
+        <span class="form">
+          <% if word.image? %>
+            <%= image_tag word.image, size: Settings.size_image_of_word %>
+          <% end %>
+        </span>
+        <span class="form">
+          <% if word.sound? %>
+            <%= audio_tag word.sound, class: "audio-play" %>
+            <p class="btn btn-primary audioButton"><%= t "play" %></p>
+          <% end %>
+        </span>
+      </li>
+    <% end %>
+  </ul>
 <% end %>
+
+

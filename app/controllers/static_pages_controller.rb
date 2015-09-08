@@ -2,6 +2,7 @@ class StaticPagesController < ApplicationController
   before_action :authorize_user, only: [:home]
 
   def home
+    @user ||= current_user
     @activities = current_user.load_activities.paginate page: params[:page], per_page:10
   end
 

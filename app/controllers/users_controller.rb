@@ -1,13 +1,15 @@
 class UsersController < ApplicationController
-  before_action :authorize_user, only: [:edit, :update, :destroy]
+  before_action :authorize_user, only: [:edit, :update, :index]
   before_action :correct_user, only: [:edit, :update]
 
   def index
+    @user ||= current_user
     @users = User.paginate page: params[:page], per_page:10
   end
 
   def show
     @user = User.find_by(id: params[:id])|| User.find_by(slug: params[:id])
+    @activities = @user.activities.paginate page: params[:page]
   end
 
   def new

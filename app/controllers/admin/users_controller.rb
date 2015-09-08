@@ -1,5 +1,6 @@
 class Admin::UsersController < Admin::ActionBaseController
   def index
+    @user ||= current_user
     @users = User.paginate page: params[:page], per_page:10
   end
 

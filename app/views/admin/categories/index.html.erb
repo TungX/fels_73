@@ -1,10 +1,12 @@
 <% provide :title, t("category_page.list") %>
 <h1><%= t "category_page.categories" %><h1>
-<div class="row">
-  <aside class="col-md-4">
+<div id="show_category_wrapper">
+  <aside class="form_left">
     <section class="category_form">
       <%= render "category_form" %>
     </section>
   </aside>
+  <aside class="form_right">
+    <%= render "categories" %>
+  </aside>
 </div>
-<%= render "categories" %>

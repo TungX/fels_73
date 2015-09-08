@@ -1,14 +1,19 @@
-<div class="row">
-  <aside class="col-md-4">
-    <section class="user_info">
-      <p>
-        <%= avatar_for user %>
-        <%= link_to user.name, user %>
-        <%= link_to t("delete"), admin_user_path(user), method: :delete,
-          data: {confirm: t("areyousure")} if signed_in? &&
-          current_user.admin? && current_user.id != user.id %>
-      </p>
-      <%= user.email %>
-    </section>
-  </aside>
-</div>
+<li>
+  <div class="form_left">
+    <%= avatar_for user %>
+  </div>
+  <div class="form_right">
+    <p>
+      <%= link_to user.name, user %>
+      <%= link_to t("delete"), admin_user_path(user), method: :delete,
+        data: {confirm: t("areyousure")} if signed_in? &&
+        current_user.admin? && current_user.id != user.id %>
+    </p>
+    <p><%= user.email %></p>
+    <p>
+      <%= t "number_word_learned" %>
+      <%= Word.learned(user.id).count %>
+      <%= t "words" %>
+    </p>
+  </div>
+</li>

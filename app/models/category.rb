@@ -6,6 +6,7 @@ class Category < ActiveRecord::Base
   validates :description,  presence: true, length: {maximum: 140}
 
   before_save :make_slug
+  after_destroy :destroy_activities
 
   def to_param
     slug
@@ -14,5 +15,9 @@ class Category < ActiveRecord::Base
   private
   def make_slug
     self.slug = self.name.downcase.gsub(" ", "-")
+  end
+
+  def destroy_activities
+    Activity.by_category(self.id).destroy_all
   end
 end

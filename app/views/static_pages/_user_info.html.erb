@@ -1,16 +1,18 @@
-<div class="row">
-    <section class="user_info">
-      <p>
-        <%= avatar_for current_user %>
-        <h1><%= link_to current_user.name, current_user %></h1>
-        <%= current_user.email %>
-        <span>
-          <b><%= t "number_word_learned" %></b>
-          <%= Word.all_word(current_user.id).count %>
-        </span>
-      </p>
-    </section>
-    <section class="user_info">
-      <%= render "static_pages/stats" %>
-    </section>
-</div>
+<section class="user_info center">
+  <%= avatar_for @user %>
+  <%= render "users/follow_form" if signed_in? %>
+</section>
+<section class="user_info center">
+  <h1 class="user_info center">
+    <%= link_to @user.name, @user %>
+  </h1>
+  <%= @user.email %>
+  <span>
+    <b><%= t "number_word_learned" %></b>
+    <%= Word.all_word(@user.id).count %>
+    <%= t "words" %>
+  </span>
+</section>
+<section class="stats center">
+  <%= render "static_pages/stats" %>
+</section>

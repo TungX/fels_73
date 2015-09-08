@@ -1,14 +1,37 @@
 <h1><%= t "result" %></h1>
-<%= t "user_learn" %>: <%= link_to @lesson.user.name, @lesson.user %>
-<% @lesson.lesson_words.each do |ls| %>
-  <li>
-    <%= ls.word.content %>|
-    <% if ls.answer.nil? %>
-      <%= t "you_dont_select_answer" %>
-    <% else %>
-      <%= t "your_answer" %>: <%= ls.answer.content %>|
-      <%= ls.answer.is_correct ? t("you_have_true_answer") :
-        t("you_have_false_answer") %>
-    <% end %>
-  </li>
-<% end %>
+<p><%= t "user_learn" %>: <%= link_to @lesson.user.name, @lesson.user %></p>
+<p>
+  <%= t "category" %>: <%= link_to @lesson.category.name, categories_path %>
+  <%= Answer.corrects(@lesson.id).count %> /
+  <%= @lesson.words.count %>
+</p>
+<ul id="result_wrapper">
+  <% @lesson.lesson_words.each do |ls| %>
+    <li>
+      <div class="form">
+        <%= ls.word.content %>
+        <span><%= image_tag ls.word.image if ls.word.image? %></span>
+      </div>
+      <div class="form">
+        <% if ls.answer.nil? %>
+          <%= t "you_dont_select_answer" %>
+        <% else %>
+          <%= t "your_answer" %>: <%= ls.answer.content %>
+      </div>
+      <div class="form">
+        <% if ls.answer.is_correct %>
+          <p class="answer_true"><%= t("you_have_true_answer") %></p>
+        <% else %>
+          <p><%= t("you_have_false_answer") %></p>
+        <% end %>
+      </div>
+      <div class="form">
+        <% if ls.word.sound? %>
+          <%= audio_tag ls.word.sound, class: "audio-play" %>
+          <p class="btn btn-primary audioButton"><%= t "speak" %></p>
+        <% end %>
+      </div>
+      <% end %>
+    </li>
+  <% end %>
+</ul>

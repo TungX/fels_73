@@ -9,6 +9,10 @@ class Activity < ActiveRecord::Base
     relationships where follower_id = #{user_id}) or user_id = #{user_id}")
     .order("created_at DESC")}
 
+  scope :by_user, ->user_id{where(target_id: user_id)}
+  scope :by_category, ->category_id{where(target_id: category_id,
+    state: [:learned, :learning])}
+
   def load_user
     User.find_by id: self.target_id
   end

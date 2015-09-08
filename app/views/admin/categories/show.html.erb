@@ -1,11 +1,25 @@
-<div>
-  <p><%= @category.name %>
-  <%= link_to t("edit"), edit_admin_category_path(@category) %>|
-  <%= link_to t("delete"), admin_category_path(@category), method: :delete, data: {confirm: t("areyousure")} %></p>
-  <%= @category.description %>
-  <%= render "admin/words/word_form" %>
-  <ol class="words">
-    <%= render @words %>
-  </ol>
-  <%= will_paginate @words %>
+<div id="show_category_wrapper">
+  <div class="col-md-12">
+  <h1><%= @category.name %></h1>
+    <p>
+      <%= link_to t("edit"), edit_admin_category_path(@category) %>|
+      <%= link_to t("delete"), admin_category_path(@category), method: :delete, data: {confirm: t("areyousure")} %>
+    </p>
+    <p><%= @category.description %></p>
+  </div>
+  <div class="form_left col-md-12">
+    <%= render "admin/words/word_form" %>
+  </div>
+  <div class="form_right">
+    <ul id="word_list">
+      <li>
+        <strong class="form"><%= t "update" %></strong>
+        <strong class="form"><%= t "content" %></strong>
+        <strong class="form"><%= t "image" %></strong>
+        <strong class="form"><%= t "sound" %></strong>
+      </li>
+      <%= render @words %>
+    </ul>
+    <%= will_paginate @words %>
+  </div>
 </div>

@@ -1,20 +1,28 @@
 <li>
-  <%= t "content" %>: <%= link_to word.content, admin_word_path(word) %>
-  <%= link_to t("edit"), edit_admin_word_path(word) %>|
-  <%= link_to t("delete"), admin_word_path(word), method: :delete,
-    data: {confirm: t("areyousure")} %>
-  <% if word.image? %>
-    <p><%= image_tag word.image, size: 60 %></p>
-  <% end %>
-  <% if word.sound? %>
-    <%= audio_tag word.sound, class: "audio-play" %>
-    <p class="btn btn-primary audioButton"><%= t "play" %></p>
-  <% end %>
-  <% if word.answers.any? %>
-    <% word.answers.each do |answer| %>
-      <p>
-        <%= answer.content %>
-      </p>
+  <span class="form">
+    <%= link_to t("edit"), edit_admin_word_path(word) %>|
+    <%= link_to t("delete"), admin_word_path(word), method: :delete,
+      data: {confirm: t("areyousure")} %>
+  </span>
+  <span class="form">
+    <%= word.content %>
+  </span>
+  <span class="form">
+    <% if word.image? %>
+      <%= image_tag word.image, size: Settings.size_image_of_word %>
     <% end %>
-  <% end %>
+  </span>
+  <span class="form">
+    <% if word.sound? %>
+      <%= audio_tag word.sound, class: "audio-play" %>
+      <p class="btn btn-primary audioButton"><%= t "play" %></p>
+    <% end %>
+  </span>
+  <ul class="answers" >
+    <% word.answers.each do |answer| %>
+      <li class="answer">
+        <%= answer.content %>
+      </li>
+    <% end %>
+  </ul>
 </li>

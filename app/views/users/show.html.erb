@@ -1,3 +1,14 @@
 <% provide :title, t("show_user") %>
-<%= render "follow_form" if signed_in? %>
-<%= render @user%>
+<div id="show_activity_wrapper">
+  <aside class="form_left">
+    <%= render "static_pages/user_info" %>
+  </aside>
+  <aside class="form_right" >
+    <% if @activities.any? %>
+      <ul id="show_activity_wrapper">
+        <%= render @activities %>
+      </ul>
+      <%= will_paginate @activities %>
+    <% end %>
+  </aside>
+</div>

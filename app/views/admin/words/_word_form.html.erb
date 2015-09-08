@@ -1,21 +1,28 @@
 <%= form_for [:admin, @word] do |f| %>
   <%= render "shared/error_messages", object: f.object %>
-  <%= f.hidden_field :category_id, value: @word.category.id %>
-  <%= f.label :content %>
-  <%= f.text_field :content, class: "form-control" %>
-  <%= f.fields_for :answers do |answer| %>
-    <%= render "admin/categories/answer_fields", f: answer %>
-  <% end %>
-
-  <p><%= link_to_add_fields(t("add_answer"), f, :answers) %></p>
-  <%= f.label :image %>
-  <span class="picture">
-    <%= f.file_field :image %>
-  </span>
-  <%= f.label :Sound %>
-  <span class="picture">
-    <%= f.file_field :sound %>
-  </span>
-  <%= f.submit @word.id? ? t("update") : t("create_word") ,
-    class: "btn-primary" %>
+  <div class="col-md-12">
+    <%= f.hidden_field :category_id, value: @word.category.id %>
+    <%= f.label :content %>
+    <%= f.text_field :content, class: "form-control" %>
+    <%= f.label :image %>
+    <span class="picture">
+      <%= f.file_field :image %>
+    </span>
+    <%= f.label :Sound %>
+    <span class="picture">
+      <%= f.file_field :sound %>
+    </span>
+  </div>
+  <div class="col-md-12">
+    <%= f.fields_for :answers do |answer| %>
+      <%= render "admin/categories/answer_fields", f: answer %>
+    <% end %>
+  </div>
+  <div class="col-md-12">
+    <%= link_to_add_fields(t("add_answer"), f, :answers) %>
+  </div>
+  <div class="col-md-12">
+    <%= f.submit @word.id? ? t("update") : t("create_word") ,
+      class: "btn-primary" %>
+  </div>
 <% end %>

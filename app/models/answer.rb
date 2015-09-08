@@ -4,5 +4,6 @@ class Answer < ActiveRecord::Base
 
   validates :content, presence: true, length: {maximum: 50}
 
-  scope :correct,->{where(is_correct: true)}
+  scope :corrects, ->lesson_id{where("id in (select answer_id from lesson_words where
+    lesson_id = #{lesson_id}) and is_correct = 't'")}
 end
